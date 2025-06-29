@@ -1,0 +1,40 @@
+<!-- frontend/cadastro-animal.html -->
+ <link rel="stylesheet" href="style.css">
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro de Animal</title>
+</head>
+<body>
+  <h1>Cadastrar Novo Animal</h1>
+  <form id="formAnimal">
+    <label>Nome: <input type="text" name="nome" required></label><br>
+    <label>Espécie: <input type="text" name="especie" required></label><br>
+    <label>Raça: <input type="text" name="raca" required></label><br>
+    <label>Idade: <input type="number" name="idade" required></label><br>
+    <label>Tutor: <input type="text" name="tutor" required></label><br>
+    <button type="submit">Cadastrar</button>
+  </form>
+  <a href="index.html" class="botao-voltar">← Voltar à Página Inicial</a>
+
+  <p id="mensagem"></p>
+
+  <script>
+    const form = document.getElementById('formAnimal');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const dados = Object.fromEntries(new FormData(form).entries());
+      const resposta = await fetch('http://localhost:3000/animais', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dados)
+      });
+      const result = await resposta.json();
+      document.getElementById('mensagem').innerText =
+        resposta.ok ? 'Animal cadastrado com sucesso!' : 'Erro ao cadastrar.';
+      form.reset();
+    });
+  </script>
+</body>
+</html>

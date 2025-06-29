@@ -1,0 +1,128 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Fonte clean */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fdfaf7; /* branco suave */
+  color: #3e2c23; /* marrom escuro */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+/* Cabeçalho */
+h1 {
+  margin-bottom: 2rem;
+  color: #5c4433;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+/* Formulários e inputs */
+form,
+#idAnimal {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(100, 80, 60, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+label {
+  display: block;
+  margin-bottom: 1rem;
+  color: #3e2c23;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"] {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top: 0.25rem;
+  font-size: 1rem;
+  background-color: #fefefe;
+  color: #3e2c23;
+}
+
+/* Botões */
+button {
+  background-color: #8b5e3c;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #a96f45;
+}
+
+/* Lista de histórico */
+ul#listaHistorico {
+  list-style: none;
+  margin-top: 2rem;
+  padding: 0;
+  max-width: 500px;
+  width: 100%;
+}
+
+ul#listaHistorico li {
+  background-color: #fffaf3;
+  border: 1px solid #e0d6cd;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  color: #4c3529;
+}
+
+/* Mensagem */
+#mensagem {
+  margin-top: 1.5rem;
+  color: #5c4433;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Estilo específico para o index.html */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+ul li a {
+  display: block;
+  background-color: #eaddd2;
+  color: #3e2c23;
+  text-decoration: none;
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+ul li a:hover {
+  background-color: #d5bbaa;
+}

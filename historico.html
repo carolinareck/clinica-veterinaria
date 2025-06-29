@@ -1,0 +1,32 @@
+<!-- frontend/historico.html -->
+ <link rel="stylesheet" href="style.css">
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Histórico de Serviços</title>
+</head>
+<body>
+  <h1>Consultar Histórico por ID do Animal</h1>
+  <input type="number" id="idAnimal" placeholder="ID do animal">
+  <button onclick="buscarHistorico()">Buscar</button>
+
+  <ul id="listaHistorico"></ul>
+  <a href="index.html" class="botao-voltar">← Voltar à Página Inicial</a>
+
+  <script>
+    async function buscarHistorico() {
+      const id = document.getElementById('idAnimal').value;
+      const resposta = await fetch(`http://localhost:3000/historico/${id}`);
+      const historico = await resposta.json();
+      const lista = document.getElementById('listaHistorico');
+      lista.innerHTML = '';
+      historico.forEach(item => {
+        const li = document.createElement('li');
+        li.innerText = `${item.tipo} - ${item.data} - ${item.descricao}`;
+        lista.appendChild(li);
+      });
+    }
+  </script>
+</body>
+</html>

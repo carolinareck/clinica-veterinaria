@@ -1,0 +1,39 @@
+<!-- frontend/registro-servico.html -->
+ <link rel="stylesheet" href="style.css">
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Registrar Serviço</title>
+</head>
+<body>
+  <h1>Registrar Serviço para Animal</h1>
+  <form id="formServico">
+    <label>Tipo: <input type="text" name="tipo" required></label><br>
+    <label>Data: <input type="date" name="data" required></label><br>
+    <label>Descrição: <input type="text" name="descricao" required></label><br>
+    <label>ID do Animal: <input type="number" name="id_animal" required></label><br>
+    <button type="submit">Registrar</button>
+  </form>
+<a href="index.html" class="botao-voltar">← Voltar à Página Inicial</a>
+  <p id="mensagem"></p>
+
+  <script>
+    const form = document.getElementById('formServico');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const dados = Object.fromEntries(new FormData(form).entries());
+      const resposta = await fetch('http://localhost:3000/servicos', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dados)
+      });
+      const result = await resposta.json();
+      document.getElementById('mensagem').innerText =
+        resposta.ok ? 'Serviço registrado com sucesso!' : 'Erro ao registrar.';
+      form.reset();
+    });
+    
+  </script>
+</body>
+</html>
